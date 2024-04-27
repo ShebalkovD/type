@@ -51,7 +51,7 @@ function trackKeyboardActivity() {
 }
 
 
-trackKeyboardActivity('.printed')
+trackKeyboardActivity()
 
 
 
