@@ -1,4 +1,5 @@
 let heading = document.querySelector('.text') // тег, который отображает текст
+let btn = document.querySelector('button') 
 
 let text = 'вода кот печать слепой скрипт'.split("") // массив с символами для перебора и проверки
 let screen_text = [] // массив для вывода на экран
@@ -9,10 +10,8 @@ for (let index = 0; index < text.length; index++) {
     screen_text.push(element)
 }
 
-
 let i = 0 // счетчик символов
-let number = text[i] // текущий символ
-
+var number = text[i] // текущий символ
 
 heading.innerHTML = screen_text.join('') // сборка строки и вывод на экран
 heading.style.color = 'gray'
@@ -20,6 +19,24 @@ heading.style.color = 'gray'
 let children = heading.children // получение массива символов, обернутых в span
 children[0].classList.add('current') // добавление каретки для символа
 
+function reset(){
+    i = 0 // счетчик символов
+    number = text[i] // текущий символ
+    heading.style.color = 'gray'
+    for (let index = 0; index < children.length; index++) {
+        const element = children[index];
+        element.classList.remove('current')
+        element.style.color = 'gray'
+        
+    }
+
+    children[0].classList.add('current') // добавление каретки для символа
+}
+    
+
+btn.addEventListener('click', function(){
+    reset()
+})
 
 function trackKeyboardActivity() {
     document.addEventListener('keydown', function(event) {
