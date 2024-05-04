@@ -23,8 +23,8 @@ function fill_text(i){
     heading.style.color = 'gray'
     
     children = heading.children
-    reset()
     children[0].classList.add('current')
+    reset()
 }
 
 fill_text(text_counter)
@@ -41,12 +41,10 @@ function reset(){
     heading.style.color = 'gray'
     for (let index = 0; index < children.length; index++) {
         const element = children[index];
-        element.classList.remove('current')
-        element.style.color = 'gray'
-        
+        element.classList.remove('current')        
     }
-
     children[0].classList.add('current') // добавление каретки для символа
+
 }
     
 
@@ -56,10 +54,7 @@ btn.addEventListener('click', function(){
 
 function trackKeyboardActivity() {
     document.addEventListener('keydown', function(event) {
-        if (i == text.length -1){
-            text_counter ++
-            fill_text(text_counter)
-        }
+       
 
         console.log('ЦЕЛЬ!' + number) 
         // получение нажатой клавиши
@@ -71,13 +66,19 @@ function trackKeyboardActivity() {
 
         // проверка на совпадение нажатой клавиши и текущего символа
         if (number == keyPressed) {
-            children[i].style.color = 'white'
-            i = i + 1 // переход к следующему символу
-            number = text[i]
-            children[i-1].classList.remove('current') // удаление каретки для предыдущего символа
-            children[i].classList.add('current') // добавление каретки для следующего символа
+            if (i == text.length-1){
+                text_counter ++
+                fill_text(text_counter)
+            }else{
+                children[i].style.color = 'white'
+                i = i + 1 // переход к следующему символу
+                number = text[i]
+                children[i-1].classList.remove('current') // удаление каретки для предыдущего символа
+                children[i].classList.add('current') // добавление каретки для следующего символа
+                
+            }
             
-
+            
         } else {
 
             children[i].style.color = 'red'
