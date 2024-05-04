@@ -1,22 +1,38 @@
 let heading = document.querySelector('.text') // тег, который отображает текст
-let btn = document.querySelector('button') 
+let btn = document.querySelector('button')
+let text_arr = ['вода кот печать слепой скрипт', 'вторая строка для печати в тренажере','вода кот печать слепой скрипт',] 
 
-let text = 'вода кот печать слепой скрипт'.split("") // массив с символами для перебора и проверки
-let screen_text = [] // массив для вывода на экран
+let text_counter = 0
+let text = ['t','e','x','t'] // массив с символами для перебора и проверки
+let screen_text = []// массив для вывода на экран
 
-// наполнение массива символами, обернутыми в span
-for (let index = 0; index < text.length; index++) {
-    const element = `<span>${text[index]}</span>`
-    screen_text.push(element)
+
+let children // получение массива символов, обернутых в span
+let i = 0 // счетчик символов
+
+
+function fill_text(i){
+    text = text_arr[i].split("") // массив с символами для перебора и проверки
+    screen_text = [] 
+    // наполнение массива символами, обернутыми в span
+    for (let index = 0; index < text.length; index++) {
+        const element = `<span>${text[index]}</span>`
+        screen_text.push(element)
+    }
+    heading.innerHTML = screen_text.join('') // сборка строки и вывод на экран
+    heading.style.color = 'gray'
+    
+    children = heading.children
+    reset()
+    children[0].classList.add('current')
 }
 
-let i = 0 // счетчик символов
+fill_text(text_counter)
+
 var number = text[i] // текущий символ
 
-heading.innerHTML = screen_text.join('') // сборка строки и вывод на экран
-heading.style.color = 'gray'
 
-let children = heading.children // получение массива символов, обернутых в span
+
 children[0].classList.add('current') // добавление каретки для символа
 
 function reset(){
@@ -40,8 +56,12 @@ btn.addEventListener('click', function(){
 
 function trackKeyboardActivity() {
     document.addEventListener('keydown', function(event) {
-        console.log('ЦЕЛЬ!' + number)
+        if (i == text.length -1){
+            text_counter ++
+            fill_text(text_counter)
+        }
 
+        console.log('ЦЕЛЬ!' + number) 
         // получение нажатой клавиши
         const keyPressed = event.key
         // получение ее кода
