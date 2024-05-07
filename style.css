@@ -3,6 +3,7 @@ html, *{
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
     position: relative;
     display: flex;
@@ -16,14 +17,11 @@ body{
 }
 
 .text{
-    
     width: 50%;
     padding: 10px;
     border-radius: 10px;
     margin-top: 30vh;
     background-color: rgb(30, 32, 66);
-    
-  
 }
 
 p{
@@ -47,14 +45,22 @@ p{
     top: 0;
     left: 0px;
     background-color: white;
+    animation: tick 1500ms ease-in-out infinite;
 }
 
 button{
     height: 60px;
     width: 200px;
     margin-top: 40px;
+}
 
-
+@keyframes tick{
+    0%{
+        opacity: 0;
+    }
+    20%, 100%{
+        opacity: 1;
+    }
 }
 
 
