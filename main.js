@@ -61,7 +61,7 @@ function trackKeyboardActivity() {
         // если нажата верная клавиша
         if (number == keyPressed) {
             // если символ последний в строке - переходим к новой
-            if (i == text.length-1) {
+            if (i == text.length-1 && text_counter != text_arr.length - 1) {
                 text_counter ++
                 fill_text(text_counter)
             }
@@ -77,7 +77,7 @@ function trackKeyboardActivity() {
                 children[i].classList.add('current') // добавление каретки для следующего символа
             }
         }
-        // если нажата неверна клавиша 
+        // если нажата неверная клавиша 
         else {
             children[i].style.color = 'red'
             console.log('ERROR!' + number)
@@ -91,7 +91,11 @@ function trackKeyboardActivity() {
 }
 
 // Фразы для вывода на экран
-text_arr = ['первая вода кот печать слепой скрипт', 'вторая строка для печати в тренажере','третья вода кот печать слепой скрипт',] 
+text_arr = [
+'первая вода кот печать слепой скрипт',
+'вторая строка для печати в тренажере',
+'третья вода кот печать слепой скрипт',
+] 
 
 fill_text(text_counter) // обработка текста и вывод на экран
 trackKeyboardActivity() // запуск отслеживания нажатия клавиш
