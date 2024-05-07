@@ -8,6 +8,7 @@ let screen_text = []// массив для вывода на экран
 let children // массив символов, обернутых в span
 let i = 0 // счетчик символов 
 let number = text[i] // текущий символ
+let text_shift = 0 // смещение текста
 let text_arr = ['--- здесь должен быть текст ---'] // фразы для вывода на экран
 
 let sign_counter = 0 // счетчик символов для статистики
@@ -33,6 +34,10 @@ function fill_text(i) {
 
 // сброс прогресса текущей строки
 function reset(){
+
+    text_shift = 0
+    heading.style.transform = `translateX(${100 - text_shift}px)`
+
     i = 0 // счетчик символов
     number = text[i] // текущий символ
 
@@ -65,10 +70,11 @@ function set_stats() {
     spm = Math.round(sign_counter / 60)
     stats.innerHTML = `Символов в минуту: ${spm}`
 
-    // console.log('Кол-во символов:', sign_counter);
-    // console.log('Символов в минуту:', spm);
+    console.log('Кол-во символов:', sign_counter);
+    console.log('Символов в минуту:', spm);
 }
 
+// запуск таймера
 function start_timer() {
     timer_value = time
     timer.innerHTML = `Время: ${timer_value}`
@@ -110,13 +116,16 @@ function trackKeyboardActivity() {
             // если не последний
             else {
                 children[i].style.color = 'white'
-
+                text_shift += children[i].offsetWidth
+                heading.style.transform = `translateX(${100 - text_shift}px)`
                 // переход к следующему символу
                 i = i + 1 
                 number = text[i]
 
                 children[i-1].classList.remove('current') // удаление каретки для предыдущего символа
                 children[i].classList.add('current') // добавление каретки для следующего символа
+
+                
             }
 
             if (i == text.length-1 && text_counter == text_arr.length - 1) {
@@ -140,7 +149,7 @@ function trackKeyboardActivity() {
 
 // Фразы для вывода на экран
 text_arr = [
-'первая строка',
+'первая строка первая строка первая строка первая строка',
 'вторая строка',
 'третья строка',
 ] 
@@ -149,7 +158,6 @@ fill_text(text_counter) // обработка текста и вывод на э
 trackKeyboardActivity() // запуск отслеживания нажатия клавиш
 
 // таймер 
-
 var tick = start_timer()
 
 

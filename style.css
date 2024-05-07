@@ -17,11 +17,24 @@ body{
 }
 
 .text{
+    display: block;
+    width: 100vw;
+    word-break: keep-all;
+    white-space: nowrap;
+    transform: translateX(100px);
+}
+
+.container{
+    margin-top: 30vh;   
     width: 50%;
+    height: 48px;
+    background-color: rgb(30, 32, 66);
+    display: flex;
     padding: 10px;
     border-radius: 10px;
-    margin-top: 30vh;
-    background-color: rgb(30, 32, 66);
+    justify-content: start;
+    align-items: center;
+    overflow-x: hidden;
 }
 
 p{
@@ -46,12 +59,6 @@ p{
     left: 0px;
     background-color: white;
     animation: tick 1500ms ease-in-out infinite;
-}
-
-button{
-    height: 60px;
-    width: 200px;
-    margin-top: 40px;
 }
 
 @keyframes tick{
