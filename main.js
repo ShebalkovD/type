@@ -1,91 +1,89 @@
-let heading = document.querySelector('.text') // тег, который отображает текст
-let btn = document.querySelector('button')
+let heading = document.querySelector('.text')  // тег, который отображает текст
+let text_counter = 0 // счетчик фраз в списке
+let text = [] // массив с символами для перебора и проверки
+let screen_text = []// массив для вывода на экран
+let children // получение массива символов, обернутых в span
+let i = 0 // счетчик символов 
+let number = text[i] // текущий символ
+
+// Фразы для вывода на экран
 let text_arr = ['вода кот печать слепой скрипт', 'вторая строка для печати в тренажере','вода кот печать слепой скрипт',] 
 
-let text_counter = 0
-let text = ['t','e','x','t'] // массив с символами для перебора и проверки
-let screen_text = []// массив для вывода на экран
-
-
-let children // получение массива символов, обернутых в span
-let i = 0 // счетчик символов
-
-
-function fill_text(i){
-    text = text_arr[i].split("") // массив с символами для перебора и проверки
+function fill_text(i) {
+    text = text_arr[i].split("")
     screen_text = [] 
+
     // наполнение массива символами, обернутыми в span
     for (let index = 0; index < text.length; index++) {
         const element = `<span>${text[index]}</span>`
         screen_text.push(element)
     }
+
     heading.innerHTML = screen_text.join('') // сборка строки и вывод на экран
-    heading.style.color = 'gray'
+    children = heading.children // получение символов текущей строки
+    children[0].classList.add('current') // добавление каретки первому символу
     
-    children = heading.children
-    children[0].classList.add('current')
     reset()
 }
 
 fill_text(text_counter)
-
-var number = text[i] // текущий символ
-
-
 
 children[0].classList.add('current') // добавление каретки для символа
 
 function reset(){
     i = 0 // счетчик символов
     number = text[i] // текущий символ
+
     heading.style.color = 'gray'
+
     for (let index = 0; index < children.length; index++) {
         const element = children[index];
-        element.classList.remove('current')        
+        element.classList.remove('current') // сброс каретки
+        element.style.color = 'gray' // сброс цвета
     }
-    children[0].classList.add('current') // добавление каретки для символа
 
+    children[0].classList.add('current') // добавление каретки для символа
 }
     
-
-btn.addEventListener('click', function(){
-    reset()
-})
-
 function trackKeyboardActivity() {
     document.addEventListener('keydown', function(event) {
-       
+        const keyPressed = event.key // получение нажатой клавиши
+        const keyCode = event.code // получение ее кода
 
-        console.log('ЦЕЛЬ!' + number) 
-        // получение нажатой клавиши
-        const keyPressed = event.key
-        // получение ее кода
-        const keyCode = event.code
+        // Вывод в консоль целевого символа и нажатой клавиши, ее кода
+        console.log('ЦЕЛЬ!' + number)  
         console.log('Key pressed: ' + keyPressed)
         console.log('Key code: ' + keyCode)
 
-        // проверка на совпадение нажатой клавиши и текущего символа
+        // если нажата верная клавиша
         if (number == keyPressed) {
-            if (i == text.length-1){
+            // если символ последний в строке - переходим к новой, если нет - переходим к новому символу
+            if (i == text.length-1) {
                 text_counter ++
                 fill_text(text_counter)
-            }else{
+            }
+            else {
                 children[i].style.color = 'white'
-                i = i + 1 // переход к следующему символу
+
+                // переход к следующему символу
+                i = i + 1 
                 number = text[i]
+
                 children[i-1].classList.remove('current') // удаление каретки для предыдущего символа
                 children[i].classList.add('current') // добавление каретки для следующего символа
-                
             }
-            
-            
-        } else {
-
-            children[i].style.color = 'red'
-            console.log('ERROR!' + number)
         }
-        
-    });
+        // если нажата неверна клавиша 
+        else {
+            children[i].style.color = 'red'
+
+            console.log('ERROR!' + number)
+            // сброс тренажера при нажатии сочетания клавиш (Ctrl + Enter)
+            if (keyCode === 'Enter' && (event.ctrlKey || event.metaKey)){
+                reset()
+            }
+        }
+    })
 }
 
 
