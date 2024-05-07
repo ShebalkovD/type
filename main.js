@@ -79,13 +79,14 @@ function trackKeyboardActivity() {
         }
         // если нажата неверная клавиша 
         else {
-            children[i].style.color = 'red'
-            console.log('ERROR!' + number)
-
             // сброс тренажера при нажатии сочетания клавиш (Ctrl + Enter)
             if (keyCode === 'Enter' && (event.ctrlKey || event.metaKey)){
                 full_reset()
             }
+
+            // вывод ошибки на экран
+            children[i].style.color = 'red'
+            console.log('ERROR!' + number)
         }
     })
 }
