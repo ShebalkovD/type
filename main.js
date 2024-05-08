@@ -69,13 +69,19 @@ function set_stats() {
     stats.style.display = 'flex'
     stats_speed.innerHTML = `${spm} символов в минуту`
     stats_mistakes.innerHTML = mistakes
-    accuracy = ((sign_counter*100)/(sign_counter+mistakes)).toFixed(2)
+
+    if (sign_counter > 0) {
+        accuracy = ((sign_counter*100)/(sign_counter+mistakes)).toFixed(2)
+    } else {
+        accuracy = 'неопределена'
+    }
+
     if (accuracy < 80) {
         stats_accuracy.style.color = 'red'
-    }
-    else{
+    } else {
         stats_accuracy.style.color = 'green'
     }
+    
     stats_accuracy.innerHTML = `${accuracy}%`
 
     console.log('Кол-во символов:', sign_counter);
