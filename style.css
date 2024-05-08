@@ -1,7 +1,13 @@
+
 html, *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    --acent-color: #0c92ad;
+    --bg-color: #363745;
+    --line-color: #242532;
+    --mistake-color: rgb(179, 5, 5);
+
 }
 
 body{
@@ -12,23 +18,25 @@ body{
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgb(5, 7, 52);
+    background-color: var(--bg-color);
     font-family: sans-serif;
 }
 
 .text{
     display: block;
+    font-weight: 400;
     width: 100vw;
     word-break: keep-all;
     white-space: nowrap;
     transform: translateX(100px);
+    letter-spacing: 2px;
 }
 
 .container{
     margin-top: 30vh;   
     width: 50%;
     height: 48px;
-    background-color: rgb(30, 32, 66);
+    background-color: var(--line-color);
     display: flex;
     padding: 10px;
     border-radius: 10px;
@@ -38,10 +46,11 @@ body{
 }
 
 p{
-    color: white;
+    color: var(--acent-color);
+    font-weight: 700;
     margin-top: 24px;
     font-size: 16px;
-    opacity: 0.3;
+    opacity: 1;
     text-align: center;
 }
 
@@ -53,11 +62,11 @@ p{
     content: "";
     display: block;
     position: absolute;
-    width: 1px;
+    width: 2px;
     height: 100%;
     top: 0;
     left: 0px;
-    background-color: white;
+    background-color: var(--acent-color);
     animation: tick 1500ms ease-in-out infinite;
 }
 
@@ -77,4 +86,80 @@ p{
     }
 }
 
+.stats{
+    background-color: var(--bg-color);
+    border: var(--acent-color) 2px solid ;
+    padding: 40px;
+    border-radius: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 50%;
+    height: 400px;
+
+    position: absolute;
+    top: 25vh;
+    margin: 0 auto;
+
+    animation: stats 0.5s ease-in-out;
+
+    display: none;
+}
+
+.stats_img{
+    width: 300px;
+    height: 300px;
+}
+
+.stats p{
+    margin-top: 16px;
+    text-align-last: left;
+}
+
+.stats div{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 40px;
+}
+
+.stats button{
+    margin-top: 32px;
+    width: 50%;
+    height: 60px;
+    background-color: #fff;
+    border: var(--acent-color) 2px solid;
+    border-radius: 20px;
+    font-size: 24px;
+    color: var(--acent-color);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+#mistakes{
+    color: var(--mistake-color);
+}
+
+.stats button:hover{
+    cursor: pointer;
+    border-left: 5px solid var(--acent-color);
+    transform: translateX(20px);
+}
+
+
+@keyframes stats{
+    from{
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
