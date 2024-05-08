@@ -1,4 +1,3 @@
-
 html, *{
     margin: 0;
     padding: 0;
@@ -19,7 +18,10 @@ body{
     width: 100%;
     height: 100%;
     background-color: var(--bg-color);
-    font-family: sans-serif;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .text{
@@ -28,7 +30,7 @@ body{
     width: 100vw;
     word-break: keep-all;
     white-space: nowrap;
-    transform: translateX(100px);
+    transform: translateX(calc(18%));
     letter-spacing: 2px;
 }
 
@@ -42,12 +44,12 @@ body{
     border-radius: 10px;
     justify-content: start;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 p{
     color: var(--acent-color);
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 24px;
     font-size: 16px;
     opacity: 1;
@@ -56,6 +58,13 @@ p{
 
 .current{
     position: relative;
+}
+
+#timer{
+    position: absolute;
+    top: 28vh;
+    left: 25%;
+    margin: 0;
 }
 
 .current::before{

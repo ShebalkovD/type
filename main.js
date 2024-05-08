@@ -53,7 +53,7 @@ function reset(){
     mistakes = 0
     text_shift = 0
 
-    heading.style.transform = `translateX(100px)` // сдвиг сроки
+    heading.style.transform = `translateX(calc(20%))` // сдвиг сроки
     heading.style.color = 'gray'
     
     fill_text()
@@ -91,11 +91,11 @@ function set_stats() {
 // запуск таймера
 function start_timer() {
     timer_value = time
-    timer.innerHTML = `Время: ${timer_value}`
+    timer.innerHTML = timer_value
     // console.log('Таймер СТАРТ');
     tick = setInterval(function() {
         timer_value --
-        timer.innerHTML = `Время: ${timer_value}`
+        timer.innerHTML = timer_value
     }, 1000)
 
     timer_id = setTimeout(function() {
@@ -125,7 +125,7 @@ function trackKeyboardActivity() {
 
                 children[i].style.color = 'white'
                 text_shift += children[i].offsetWidth
-                heading.style.transform = `translateX(${100 - text_shift}px)` // сдвиг сроки
+                heading.style.transform = `translateX(calc(20% - ${text_shift}px))` // сдвиг сроки
 
                 // переход к следующему символу
                 i = i + 1 
