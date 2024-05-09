@@ -107,8 +107,9 @@ function set_stats() {
     stats.style.display = 'flex' // открытие окна статистики
 
 
-    console.log('Кол-во символов:', sign_counter);
-    console.log('Символов в минуту:', spm);
+    // console.log('Кол-во символов:', sign_counter);
+    // console.log('Слов в минуту:', spm);
+    // console.log('Точность:', accuracy);
 }
 
 // запуск таймера
@@ -169,11 +170,6 @@ function trackKeyboardActivity() {
 
                 children[i-1].classList.remove('current') // удаление каретки для предыдущего символа
                 children[i].classList.add('current') // добавление каретки для следующего символа
-
-                // Если символ последний выводим статистику
-                if (i == text.length-1) {
-                    set_stats()
-                }
             }
             // если нажата неверная клавиша 
             else {
@@ -187,7 +183,7 @@ function trackKeyboardActivity() {
                     mistakes++
                     // вывод ошибки на экран
                     children[i].style.color = 'red'
-                    console.log('ERROR!' + number)
+                    // console.log('ERROR!' + number)
                 }
             }
         }
