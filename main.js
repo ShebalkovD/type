@@ -70,7 +70,6 @@ function reset(){
 function set_stats() {
     spm = Math.round(sign_counter/5) // расчет скорости в wpm (слова в минуту)
 
-    stats.style.display = 'flex' // открытие окна статистики
     stats_speed.innerHTML = `${spm} слов в минуту (WPM)`
     stats_mistakes.innerHTML = mistakes
 
@@ -104,6 +103,9 @@ function set_stats() {
     }
     
     stats_accuracy.innerHTML = `${accuracy}%`
+
+    stats.style.display = 'flex' // открытие окна статистики
+
 
     console.log('Кол-во символов:', sign_counter);
     console.log('Символов в минуту:', spm);
