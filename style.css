@@ -71,9 +71,11 @@ p{
 
 .type_cat{
     position: absolute;
-    top: 28vh;
+    top: calc(28vh - 2px);
     left: 45%;
     margin: 0;
+    width: 32px;
+    height: 32px;
 }
 
 .current::before{
