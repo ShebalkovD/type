@@ -127,8 +127,7 @@ p{
 }
 
 .stats_img{
-    width: 300px;
-    height: 300px;
+    width: 40%;
 }
 
 .stats p{
@@ -148,7 +147,7 @@ p{
 
 .stats button{
     margin-top: 32px;
-    width: 50%;
+    width: 75%;
     height: 60px;
     background-color: #fff;
     border: var(--acent-color) 2px solid;
