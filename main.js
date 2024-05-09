@@ -117,9 +117,9 @@ function trackKeyboardActivity() {
             const keyCode = event.code // получение ее кода
 
             // Вывод в консоль целевого символа и нажатой клавиши, ее кода
-            console.log('ЦЕЛЬ!' + number)  
-            console.log('Key pressed: ' + keyPressed)
-            console.log('Key code: ' + keyCode)
+            // console.log('ЦЕЛЬ!' + number)  
+            // console.log('Key pressed: ' + keyPressed)
+            // console.log('Key code: ' + keyCode)
 
             // если нажата верная клавиша
             if (number == keyPressed) {
@@ -135,8 +135,12 @@ function trackKeyboardActivity() {
                 sign_counter ++ // подсчет верных символов
 
                 children[i].style.color = 'white'
-                text_shift += children[i].offsetWidth
+                text_shift += children[i].offsetWidth + 0.41
                 heading.style.transform = `translateX(calc(20% - ${text_shift}px))` // сдвиг сроки
+
+                // console.log('символ',children[i]);
+                // console.log('ширина',children[i].offsetWidth);
+                // console.log('смещение',text_shift);
 
                 // переход к следующему символу
                 i = i + 1 
