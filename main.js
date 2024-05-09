@@ -1,20 +1,22 @@
-let heading = document.querySelector('.text')  // тег, который отображает текст
-let stats = document.querySelector('.stats')   // тег, который отображает статистику
+let heading = document.querySelector('.text') // тег, который отображает текст
+let stats = document.querySelector('.stats') // тег, который отображает статистику
 let stats_speed = document.getElementById('speed') // тег, который отображает скорость
-let stats_mistakes = document.getElementById('mistakes')// тег, который отображает кол-во ошибок
-let stats_accuracy = document.getElementById('accuracy')// тег, который отображает точность
+let stats_mistakes = document.getElementById('mistakes') // тег, который отображает кол-во ошибок
+let stats_accuracy = document.getElementById('accuracy') // тег, который отображает точность
 let restart_btn = document.querySelector('.restart') // кнопка заново
-let timer = document.getElementById('timer')   // тег, который отображает время
+let timer = document.getElementById('timer') // тег, который отображает время
+let type_cat = document.querySelector('.type_cat') // картинка кота над текстом
 
-let isStart = true
+let type_cat_state = false // состояние анимации кота
+let isStart = true // состояние тренажера (вкл/выкл отслеживания события нажатия на клавишу)
 
 let text = [] // массив с символами для перебора и проверки
-let screen_text = []// массив для вывода на экран
+let screen_text = [] // массив для вывода на экран
 let children // массив символов, обернутых в span
 let i = 0 // счетчик символов 
-let number  // текущий символ
+let number // текущий символ
 let text_shift = 0 // смещение текста
-let text_arr = ['--- здесь должен быть текст ---'] // фразы для вывода на экран
+let text_arr = ['--- здесь должен быть текст ---'] // исходный текст
 
 let sign_counter = 0 // счетчик символов для статистики
 let mistakes = 0 // счетчик ошибок
@@ -121,7 +123,16 @@ function trackKeyboardActivity() {
 
             // если нажата верная клавиша
             if (number == keyPressed) {
-                sign_counter ++
+                // смена картинки кота
+                if (type_cat_state === false) {
+                    type_cat.setAttribute('src', 'src/cat-left.png')
+                    type_cat_state = true
+                } else {
+                    type_cat.setAttribute('src', 'src/cat-right.png')
+                    type_cat_state = false
+                }
+
+                sign_counter ++ // подсчет верных символов
 
                 children[i].style.color = 'white'
                 text_shift += children[i].offsetWidth
@@ -141,6 +152,8 @@ function trackKeyboardActivity() {
             }
             // если нажата неверная клавиша 
             else {
+                type_cat.setAttribute('src', 'src/cat-still.png') // смена картинки кота
+
                 // сброс тренажера при нажатии сочетания клавиш (Ctrl + Enter)
                 if (keyCode === 'Enter' && (event.ctrlKey || event.metaKey)){
                     reset()
