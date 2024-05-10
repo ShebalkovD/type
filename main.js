@@ -12,6 +12,8 @@ let dark_screen = document.querySelector('.dark_screen') // затемнение
 let restart_btn = document.querySelector('.restart') // кнопка заново
 let eng_btn = document.getElementById('mode_eng') // кнопка смены языка на англиский
 let rus_btn = document.getElementById('mode_rus') // кнопка смены языка на русский
+let time30_btn = document.getElementById('mode_30') // кнопка смены таймера на 30 сек
+let time60_btn = document.getElementById('mode_60') // кнопка смены таймера на 60 сек
 
 let type_cat_state = false // состояние анимации кота
 let isStart = true // состояние тренажера (вкл/выкл отслеживания события нажатия на клавишу)
@@ -28,6 +30,7 @@ let text_arr = ['--- здесь должен быть текст ---'] // исх
 let sign_counter = 0 // счетчик символов для статистики
 let mistakes = 0 // счетчик ошибок
 let time = 60 // время таймера
+let time_multiplier = 1 // множитель времени
 
 // обработка текста и вывод на экран
 function fill_text() {
@@ -85,7 +88,7 @@ function reset(){
 function set_stats() {
     dark_screen.classList.add('dark_screen_active')
 
-    spm = Math.round(sign_counter/5) // расчет скорости в wpm (слова в минуту)
+    spm = Math.round(sign_counter*time_multiplier/5) // расчет скорости в wpm (слова в минуту)
 
     stats_speed.innerHTML = `${spm} слов в минуту (WPM)`
     stats_mistakes.innerHTML = mistakes
@@ -227,12 +230,14 @@ function mix(text) {
     return array
 }
 
+// обработка клика на кнопку рестарт
 restart_btn.addEventListener('click', function() { 
     dark_screen.classList.remove('dark_screen_active')
     stats.style.display = 'none'
     reset()
 })
 
+// смена языкового режима
 eng_btn.addEventListener('click', function() {
     stats.style.display = 'none'
     language_mode = 'eng'
@@ -241,11 +246,32 @@ eng_btn.addEventListener('click', function() {
     reset()
 })
 
+// смена языкового режима
 rus_btn.addEventListener('click', function() {
     stats.style.display = 'none'
     language_mode = 'rus'
     eng_btn.classList.remove('mode_active')
     rus_btn.classList.add('mode_active')
+    reset()
+})
+
+// смена временного режима
+time30_btn.addEventListener('click', function() {
+    stats.style.display = 'none'
+    time = 30
+    time_multiplier = 2
+    time60_btn.classList.remove('mode_active')
+    time30_btn.classList.add('mode_active')
+    reset()
+})
+
+// смена временного режима
+time60_btn.addEventListener('click', function() {
+    stats.style.display = 'none'
+    time = 60
+    time_multiplier = 1
+    time30_btn.classList.remove('mode_active')
+    time60_btn.classList.add('mode_active')
     reset()
 })
 
