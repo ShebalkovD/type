@@ -7,6 +7,8 @@ let stats_img = document.querySelector('.stats_img') // картинка в ст
 let timer = document.getElementById('timer') // тег, который отображает время
 let type_cat = document.querySelector('.type_cat') // картинка кота над текстом
 
+let dark_screen = document.querySelector('.dark_screen') // затемнение экрана
+
 let restart_btn = document.querySelector('.restart') // кнопка заново
 let eng_btn = document.getElementById('mode_eng') // кнопка смены языка на англиский
 let rus_btn = document.getElementById('mode_rus') // кнопка смены языка на русский
@@ -69,6 +71,8 @@ function reset(){
 
     heading.style.transform = `translateX(calc(20%))` // сдвиг сроки
     heading.style.color = 'gray'
+
+    dark_screen.classList.remove('dark_screen_active')
     
     fill_text()
     clearInterval(tick)
@@ -79,6 +83,8 @@ function reset(){
 
 // вывод статистики на экран
 function set_stats() {
+    dark_screen.classList.add('dark_screen_active')
+
     spm = Math.round(sign_counter/5) // расчет скорости в wpm (слова в минуту)
 
     stats_speed.innerHTML = `${spm} слов в минуту (WPM)`
@@ -188,6 +194,8 @@ function trackKeyboardActivity() {
 
                 // сброс тренажера при нажатии сочетания клавиш (Ctrl + Enter)
                 if (keyCode === 'Enter' && (event.ctrlKey || event.metaKey)){
+                    dark_screen.classList.remove('dark_screen_active')
+                    stats.style.display = 'none'
                     reset()
                 }
                 else {
@@ -220,6 +228,7 @@ function mix(text) {
 }
 
 restart_btn.addEventListener('click', function() { 
+    dark_screen.classList.remove('dark_screen_active')
     stats.style.display = 'none'
     reset()
 })
