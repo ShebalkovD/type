@@ -36,9 +36,15 @@ body{
     letter-spacing: 2px;
 }
 
-.container{
-    margin-top: 30vh;   
+.wrapper{
+    margin-top: 35vh;   
     width: 50%;
+    position: relative;
+
+}
+
+.container{
+    width: 100%;
     height: 48px;
     background-color: var(--line-color);
     display: flex;
@@ -64,15 +70,15 @@ p{
 
 #timer{
     position: absolute;
-    top: 28vh;
-    left: 25%;
+    top: -24px;
+    left: 0;
     margin: 0;
 }
 
 .type_cat{
     position: absolute;
-    top: calc(28vh - 2px);
-    left: 45%;
+    top: -24px;
+    left: 41%;
     margin: 0;
     width: 32px;
     height: 32px;
@@ -88,22 +94,6 @@ p{
     left: 0px;
     background-color: var(--acent-color);
     animation: tick 1500ms ease-in-out infinite;
-}
-
-@keyframes tick{
-    0%{
-        opacity: 1;
-    }
-    10%{
-        opacity: 0;
-    } 
-    30%{
-        opacity: 1;
-    } 
-    
-    100%{
-        opacity: 1;
-    }
 }
 
 .stats{
@@ -130,6 +120,7 @@ p{
 
 .stats_img{
     width: 40%;
+    border-radius: 50%;
 }
 
 .stats p{
@@ -171,6 +162,36 @@ p{
 }
 
 
+
+.mode{
+    
+    display: flex;
+    width: fit-content;
+}
+
+.mode_container{
+    margin: 0 auto;
+   margin-top: 8px;
+   padding: 4px;
+   border-radius: 8px;
+   background-color: var(--line-color);
+   color: gray;
+}
+
+.mode img{
+    margin-right: 8px;
+}
+
+.mode_btn:hover{
+    color: var(--acent-color);
+    cursor: pointer;
+}
+
+.mode_active{
+    color: var(--acent-color);
+}
+
+
 @keyframes stats{
     from{
         opacity: 0;
@@ -179,6 +200,22 @@ p{
     to{
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes tick{
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 0;
+    } 
+    30%{
+        opacity: 1;
+    } 
+    
+    100%{
+        opacity: 1;
     }
 }
 
