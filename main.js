@@ -74,6 +74,7 @@ function reset(){
 
     heading.style.transform = `translateX(calc(20%))` // сдвиг сроки
     type_cat.setAttribute('src', 'src/cat-still.png')
+    stats_img.setAttribute('src', ' ')
     heading.style.color = 'gray'
 
     dark_screen.classList.remove('dark_screen_active')
