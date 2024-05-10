@@ -216,6 +216,10 @@ p{
     margin-right: 8px;
 }
 
+.mode:hover{
+    cursor:default;
+}
+
 
 .mode_btn:hover{
     color: var(--acent-color);
