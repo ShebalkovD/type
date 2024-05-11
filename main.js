@@ -92,7 +92,7 @@ function set_stats() {
 
     spm = Math.round(sign_counter*time_multiplier/5) // расчет скорости в wpm (слова в минуту)
 
-    stats_speed.innerHTML = `${spm} слов в минуту (WPM)`
+    stats_speed.innerHTML = `${spm} слов в минуту`
     stats_mistakes.innerHTML = mistakes
 
     // смена картинки зависит от скорости печати

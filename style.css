@@ -38,7 +38,7 @@ body{
 }
 
 .dark_screen_active {
-    opacity: 0.2;
+    opacity: 0.3;
     z-index: 2;
 }
 
@@ -113,26 +113,22 @@ p{
 }
 
 .stats{
-    background-color: var(--bg-color);
-    padding: 40px;
     border-radius: 35px;
+    background-color: var(--bg-color);
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    width: 50%;
-    height: 400px;
+    animation: stats 0.4s ease-in-out;
+    
 
     position: absolute;
     top: 25vh;
     margin: 0 auto;
 
-    animation: stats 0.5s ease-in-out;
+    
 
-    -webkit-box-shadow: 0px 0px 79px -16px rgba(0,0,0,0.68);
-    -moz-box-shadow: 0px 0px 79px -16px rgba(0,0,0,0.68);
-    box-shadow: 0px 0px 79px -16px rgba(0,0,0,0.68);
+    
 
     z-index: 3;
 
@@ -140,17 +136,24 @@ p{
 }
 
 .stats_img{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    animation: zoom 0.8s ease-in-out;
+    margin: 0 auto;
+    transform: scale(0.8);
+    animation: zoom 1.2s ease-in-out;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
 }
 
 @keyframes zoom{
-    from{
+    0%{
         transform: scale(0.8);
     }
-    to{
+    70%{
+        transform: scale(1.05)
+    }
+    100%{
         transform: scale(1)
     }
 }
@@ -160,14 +163,23 @@ p{
     text-align-last: left;
 }
 
-.stats div{
-    width: 50%;
-    height: 100%;
+.stats_wrapper{
+    width: 300px;
+    height: 300px;
     display: flex;
+    border-radius: 32px;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    padding-left: 40px;
+    padding: 16px;
+    margin: 0 8px;
+    opacity: 0;
+    animation: stats 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.stats_wrapper:nth-child(2){
+    animation-delay: 0.2s;
 }
 
 .stats button{
@@ -188,13 +200,17 @@ p{
     transition: all 0.2s ease-in-out;
 }
 
-#mistakes{
+/* #mistakes{
     color: var(--mistake-color);
-}
+} */
 
 .stats button img { 
     width: 28px;
     height: 28px;
+}
+
+.stats span{
+    color: #fff;
 }
 
 .stats button:hover {
