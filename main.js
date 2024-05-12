@@ -96,16 +96,16 @@ function set_stats() {
     stats_mistakes.innerHTML = mistakes
 
     // смена картинки зависит от скорости печати
-    if (spm <= 40) {
+    if (spm <= 10) {
+        stats_img.setAttribute('src', 'src/gif0-10.gif')
+    } else if (spm > 10 && spm <= 20) {
+        stats_img.setAttribute('src', 'src/gif10-20.gif')
+    } else if (spm > 20 && spm <= 40) {
         stats_img.setAttribute('src', 'src/gif20-40.gif')
-    } else if (spm > 40 && spm <= 50) {
-        stats_img.setAttribute('src', 'src/gif40-50.gif')
-    } else if (spm > 50 && spm <= 60) {
-        stats_img.setAttribute('src', 'src/gif50-60.gif')
-    } else if (spm > 60 && spm <= 80) {
-        stats_img.setAttribute('src', 'src/gif60-80.gif')
-    } else if (spm > 80 && spm <= 100) {
-        stats_img.setAttribute('src', 'src/gif80-100.gif')
+    } else if (spm > 40 && spm <= 60) {
+        stats_img.setAttribute('src', 'src/gif40-60.gif')
+    } else if (spm > 60 && spm <= 100) {
+        stats_img.setAttribute('src', 'src/gif60-100.gif')
     } else if (spm > 100) {
         stats_img.setAttribute('src', 'src/gif100+.gif')
     }
