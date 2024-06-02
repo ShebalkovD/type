@@ -281,6 +281,28 @@ time60_btn.addEventListener('click', function() {
     reset()
 })
 
+document.addEventListener("DOMContentLoaded", () => {
+    const images = new Array();
+
+    function preloadImages(...images) {
+        images.forEach((image, i) => {
+            image = new Image();
+            image.src = preloadImages.arguments[i];
+        });
+    };
+
+    // Предварительная загрузка нужных картинок
+    preloadImages(
+        "src/cat-left.png",
+        "src/cat-right.png",
+        "src/gif0-10.gif",
+        "src/gif10-20.gif",
+        "src/gif20-40.gif",
+        "src/gif40-60.gif",
+        "src/gif60-100.gif",
+        "src/gif100+.gif"
+    );
+});
 
 // таймер 
 var tick = start_timer()
